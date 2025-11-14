@@ -192,15 +192,19 @@ in any browser.
 7. Final legal decision rendered
 
 ---
+
 ## 📸 Screenshots
 
 ### Case Filing Page
+
 ![Case Filing](image-1.png)
 
 ### Judgment Page
+
 ![Judgment Page](image-2.png)
 
 ### Arguments Page
+
 ![Arguments Page](image-3.png)
 
 ## 🔮 Future Enhancements
@@ -224,3 +228,9 @@ in any browser.
 ## 📜 License
 
 MIT License — free to use, modify, and distribute.
+
+## 🎬 Video
+
+Video link (as provided in the assignment):
+
+[Watch the Video](https://youtu.be/RuFlNjfUR9E)
