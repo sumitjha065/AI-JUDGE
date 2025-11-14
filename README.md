@@ -192,6 +192,11 @@ in any browser.
 7. Final legal decision rendered
 
 ---
+📷 Screenshots
+
+![case_filing.png](image-1.png)
+![judgment_page.png](image-2.png)
+![arguments_page.png](image-3.png)
 
 ## 🔮 Future Enhancements
 
