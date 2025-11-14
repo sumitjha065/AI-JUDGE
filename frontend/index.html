@@ -1,0 +1,354 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI JUDGE - Digital Courtroom</title>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Background -->
+    <div class="courtroom-bg">
+        <div class="wood-panel left"></div>
+        <div class="wood-panel right"></div>
+        <div class="court-pattern"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="courtroom-container">
+
+        <!-- Header -->
+<header class="court-header">
+    
+    <!-- LEFT SIDE: Seal + Title -->
+    <div class="court-left">
+
+        <!-- Seal -->
+        <div class="court-seal">
+            <div class="seal"><i class="fas fa-balance-scale"></i></div>
+        </div>
+
+        <!-- Title -->
+        <div class="court-title">
+            <h1>SUPREME JUDICIAL COURT</h1>
+            <p>Artificial Intelligence Justice System</p>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE: Stats -->
+    <div class="court-stats">
+        <div class="stat">
+            <span class="number">1,427</span>
+            <span class="label">CASES ADJUDICATED</span>
+        </div>
+        <div class="stat">
+            <span class="number">96.3%</span>
+            <span class="label">ACCURACY RATE</span>
+        </div>
+    </div>
+
+</header>
+
+
+        <!-- Navigation -->
+        <nav class="court-nav">
+            <div class="nav-items">
+                <button class="nav-item active" data-tab="case-filing">
+                    <i class="fas fa-folder-open"></i> Case Filing
+                </button>
+
+                <button class="nav-item" id="judgmentTab" data-tab="judgment" disabled>
+                    <i class="fas fa-gavel"></i> Court Judgment
+                </button>
+
+                <button class="nav-item" id="argumentsTab" data-tab="arguments" disabled>
+                    <i class="fas fa-scale-balanced"></i> Legal Arguments
+                    <span id="roundCounter" class="round-counter">0/5</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- MAIN PROCEEDINGS -->
+        <main class="court-proceedings">
+
+            <!-- CASE FILING -->
+            <section id="case-filing" class="proceeding active">
+
+                <div class="proceeding-header">
+                    <h2><i class="fas fa-file-contract"></i> File Your Case</h2>
+                    <p>Submit legal documents for AI judicial review</p>
+                </div>
+
+                <div class="courtroom-layout">
+
+                    <!-- PLAINTIFF -->
+                    <div class="party plaintiff">
+                        <div class="party-banner">
+                            <div class="party-icon"><i class="fas fa-user-tie"></i></div>
+                            <div class="party-info">
+                                <h3>PLAINTIFF</h3>
+                                <span class="case-number">Case No: P-2024-001</span>
+                            </div>
+                        </div>
+
+                        <div class="document-box">
+                            <div class="upload-area" id="plaintiffUpload">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <h4>Submit Evidence</h4>
+                                <p>Upload legal documents, contracts & proof</p>
+                                <button class="court-btn" id="plaintiffSelectBtn">
+                                    <i class="fas fa-folder-open"></i> Select Files
+                                </button>
+
+                                <div class="upload-status" id="plaintiffUploadStatus"></div>
+
+                                <input type="file" multiple id="plaintiffFiles" accept=".pdf,.docx,.txt" />
+                            </div>
+
+                            <div class="file-list" id="plaintiffFileList"></div>
+                        </div>
+                    </div>
+
+                    <!-- CENTER -->
+                    <div class="court-center">
+                        <div class="justice-scale"><i class="fas fa-balance-scale"></i></div>
+                        <div class="vs-badge">V.S</div>
+                    </div>
+
+                    <!-- DEFENDANT -->
+                    <div class="party defendant">
+                        <div class="party-banner">
+                            <div class="party-icon"><i class="fas fa-user-shield"></i></div>
+                            <div class="party-info">
+                                <h3>DEFENDANT</h3>
+                                <span class="case-number">Case No: D-2024-001</span>
+                            </div>
+                        </div>
+
+                        <div class="document-box">
+                            <div class="upload-area" id="defendantUpload">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <h4>Submit Defense</h4>
+                                <p>Upload counter-evidence & legal explanations</p>
+                                <button class="court-btn" id="defendantSelectBtn">
+                                    <i class="fas fa-folder-open"></i> Select Files
+                                </button>
+
+                                <div class="upload-status" id="defendantUploadStatus"></div>
+
+                                <input type="file" multiple id="defendantFiles" accept=".pdf,.docx,.txt" />
+                            </div>
+
+                            <div class="file-list" id="defendantFileList"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- CASE DETAILS -->
+                <div class="case-details">
+                    <div class="detail-group">
+                        <label><i class="fas fa-landmark"></i> Jurisdiction</label>
+                        <select id="jurisdiction">
+                            <option value="Supreme Court">Supreme Court</option>
+                            <option value="High Court">High Court</option>
+                            <option value="District Court">District Court</option>
+                            <option value="Civil Court">Civil Court</option>
+                        </select>
+                    </div>
+
+                    <div class="detail-group">
+                        <label><i class="fas fa-gavel"></i> Case Category</label>
+                        <select id="case-category">
+                            <option value="Civil">Civil Litigation</option>
+                            <option value="Criminal">Criminal Case</option>
+                            <option value="Corporate">Corporate Law</option>
+                            <option value="Contract">Contract Breach</option>
+                            <option value="Property">Property Dispute</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- SUBMIT CASE -->
+                <div class="submit-case">
+                    <button id="submitCase" class="judge-btn" disabled>
+                        <i class="fas fa-gavel"></i> REQUEST JUDGMENT
+                        <div class="loading" style="display:none;">
+                            <div class="spinner"></div>
+                            <span>Court in Session...</span>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- JUDGMENT -->
+            <section id="judgment" class="proceeding">
+
+                <div class="proceeding-header">
+                    <h2><i class="fas fa-scale-balanced"></i> Court Judgment</h2>
+                    <p>AI Judicial Analysis & Final Verdict</p>
+                </div>
+
+                <div class="judgment-container">
+
+                    <div class="judge-bench">
+
+                        <div class="judge-profile">
+                            <div class="judge-avatar"><i class="fas fa-user-tie"></i></div>
+
+                            <div class="judge-info">
+                                <h3>Honorable AI Justice</h3>
+                                <p>Digital Courtroom Authority</p>
+                            </div>
+
+                            <div class="confidence-level">
+                                <span id="confidenceBadgeUI" class="confidence-badge">HIGH CONFIDENCE</span>
+                            </div>
+                        </div>
+
+                        <div class="verdict-panel">
+                            <div class="verdict-header">
+                                <h4><i class="fas fa-scroll"></i> FINAL JUDGMENT</h4>
+                                <span id="verdictDate" class="verdict-date">Date:</span>
+                            </div>
+
+                            <div id="verdictContent" class="verdict-content">
+                                <div class="placeholder-judgment">
+                                    <i class="fas fa-scale-balanced"></i>
+                                    <p>Awaiting judicial review...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="legal-analysis">
+
+                        <div class="analysis-section">
+                            <h4><i class="fas fa-brain"></i> Legal Reasoning</h4>
+                            <div id="reasoningContent" class="analysis-content">
+                                <p>AI judge reasoning will appear here...</p>
+                            </div>
+                        </div>
+
+                        <div class="evidence-review">
+                            <div class="evidence-panel plaintiff">
+                                <h4><i class="fas fa-user-tie"></i> Plaintiff Evidence</h4>
+                                <div id="plaintiffEvidence" class="evidence-list">
+                                    <div class="evidence-item">No evidence reviewed</div>
+                                </div>
+                            </div>
+
+                            <div class="evidence-panel defendant">
+                                <h4><i class="fas fa-user-shield"></i> Defendant Evidence</h4>
+                                <div id="defendantEvidence" class="evidence-list">
+                                    <div class="evidence-item">No evidence reviewed</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="court-actions">
+                    <button id="proceedToArguments" class="action-btn primary">
+                        <i class="fas fa-scale-balanced"></i> PROCEED TO ARGUMENTS
+                    </button>
+
+                    <button id="newCase" class="action-btn secondary">
+                        <i class="fas fa-plus"></i> NEW CASE
+                    </button>
+                </div>
+
+            </section>
+
+            <!-- ARGUMENTS -->
+            <section id="arguments" class="proceeding">
+
+                <div class="proceeding-header">
+                    <h2><i class="fas fa-gavel"></i> Legal Arguments</h2>
+                    <p><span id="roundsLeft">5 rounds remaining</span></p>
+                </div>
+
+                <div class="arguments-chamber">
+
+                    <!-- PLAINTIFF ARG -->
+                    <div class="argument-side plaintiff-side">
+                        <div class="side-header">
+                            <div class="side-icon"><i class="fas fa-user-tie"></i></div>
+                            <h4>PLAINTIFF'S COUNSEL</h4>
+                        </div>
+
+                        <textarea id="plaintiffArgument" placeholder="Enter argument..."></textarea>
+                        <button id="plaintiffArgBtn" class="argument-submit" data-side="plaintiff">
+                            <i class="fas fa-paper-plane"></i> SUBMIT ARGUMENT
+                        </button>
+                    </div>
+
+                    <!-- DEFENDANT ARG -->
+                    <div class="argument-side defendant-side">
+                        <div class="side-header">
+                            <div class="side-icon"><i class="fas fa-user-shield"></i></div>
+                            <h4>DEFENDANT'S COUNSEL</h4>
+                        </div>
+
+                        <textarea id="defendantArgument" placeholder="Enter counter–argument..."></textarea>
+                        <button id="defendantArgBtn" class="argument-submit" data-side="defendant">
+                            <i class="fas fa-paper-plane"></i> SUBMIT ARGUMENT
+                        </button>
+                    </div>
+
+                    <!-- RECORD -->
+                    <div class="arguments-record">
+                        <div class="record-header">
+                            <h4><i class="fas fa-history"></i> COURT RECORD</h4>
+                            <span id="totalArguments">0 arguments recorded</span>
+                        </div>
+
+                        <div id="argumentsTimeline" class="arguments-timeline">
+                            <div class="empty-record">
+                                <i class="fas fa-file-alt"></i>
+                                <p>No arguments yet...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="courtLoading" class="court-loading">
+        <div class="loading-chamber">
+            <div class="scales-animation"><i class="fas fa-balance-scale"></i></div>
+            <h3>COURT IN SESSION</h3>
+            <p>Please wait while the AI judge reviews your case...</p>
+            <div class="progress-bar"><div class="progress"></div></div>
+        </div>
+    </div>
+
+    <!-- Notice -->
+    <div id="courtNotice" class="court-notice">
+        <div class="notice-content">
+            <i class="fas fa-gavel"></i>
+            <span id="noticeText">Processing...</span>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
